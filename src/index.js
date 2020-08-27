@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
     card.append(h2, img, p, btn)
     div.append(card)
 
-    // Create Event listener for each button created for each toy
+    // Create Event listener for like button
     btn.addEventListener("click", () => {
-      p.innerText = `${toy.likes + 1} Likes`
-      config = {
+      event.preventDefault();
+      let config = {
         method: "PATCH",
         headers: {
           "Content-Type": 'application/json',
@@ -54,17 +54,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       fetch(url+toy.id, config)
       .then(resp => resp.json())
-
+      .then(updatedToy => {
+        toy = updatedToy
+        p.innerText = `${updatedToy.likes} Likes`
+      })
     })
 
 
 
   }
-
+  // fetch toys and loadthem in div container using addToys Function
   fetch(url)
   .then(resp => resp.json())
   .then(toys => addToys(toys))
 
+
+
+  // Event Listener to create card when you submit information
   addToyForm.addEventListener("submit", () => {
     let name = event.target[0].value;
     let image = event.target[1].value;
@@ -84,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetch(url, config)
     .then(resp => resp.json())
-    
-
+    addToyForm.reset();
   })
 
 
