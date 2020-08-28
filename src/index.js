@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event Listener to create card when you submit information
   addToyForm.addEventListener("submit", () => {
+    event.preventDefault()
     let name = event.target[0].value;
     let image = event.target[1].value;
 
@@ -90,9 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetch(url, config)
     .then(resp => resp.json())
-    addToyForm.reset();
+    .then(newToy => {
+      addAToy(newToy);
+
+      addToyForm.reset();
+      addToy = !addToy;
+
+      addToy ? toyFormContainer.style.display = "block" : toyFormContainer.style.display = "none"
+    })
+
+
   })
-
-
-
 });
