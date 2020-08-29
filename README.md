@@ -21,7 +21,7 @@ On the `index.html` page, there is a `div` with the `id` "toy-collection."
 
 When the page loads, make a 'GET' request to fetch all the toy objects. With the
 response data, make a `<div class="card">` for each toy and add it to the
-toy-collection `div`.
+toy-collection `div`. [CREATE IT FOR EACH TOY][WE NEED TO GO TO 3000/TOYS TO FETCH ALL THE TOYS]
 
 ## Add Toy Info to the Card
 
@@ -86,3 +86,104 @@ body: JSON.stringify({
   "likes": <new number>
 })
 ```
+
+  //   // ## Fetch Andy's Toys
+//   //getting all the toys from server
+//   fetch('http://localhost:3000/toys')
+//   .then(res => res.json())
+//   .then(toys => displayToys(toys))
+
+//   //array iteration
+//   function displayToys(toys){
+//     toys.forEach(toy => appendToy(toy))
+//   }
+//    //single toy
+//   function appendToy(toy){
+//     console.log(toy)
+  
+// // I AM PUTTING ALL THE INFO OF THE TOY UNDER APPENDTOY FUNCTION BC IT'S FOR EACH TOY
+//   //Add Toy Info to the Card
+//   // <div class="card">
+//   //   <h2>Woody</h2>
+//   //   <img src=toy_image_url class="toy-avatar" />
+//   //   <p>4 Likes </p>
+//   //   <button class="like-btn">Like <3</button>
+//   // </div>
+
+//   const div = document.createElement('div');
+//    div.className = 'card'
+
+//    const h2 = document.createElement('h2');
+//     h2.innerText = toy.name
+
+//     const img = document.createElement('img');
+//     img.src = toy.image
+//     img.className = 'toy-avatar'
+
+//     const p = document.createElement('p');
+//     p.innerText = toy.likes + ' Likes' //this line will give me 4 likes/ I put space so it will give space
+
+//     const btn = document.createElement('button');
+//     btn.className = 'like-btn'
+//     btn.innerText = 'Like <3'
+
+// // adding functionality to the likes button
+//     btn.addEventListener('click', () => {
+//       fetch('http://localhost:3000/toys/${toy.id}',{
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Accept": "application/json"
+//       },
+
+//       body: JSON.stringify({
+//         likes: ++toy.likes //toy.likes = toy.likes + 1 //toy.likes++ will increment the likes will still return the current value instead use ++i
+//       })
+//     })
+//       .then(res =res.json ())
+//       .then(console.log)
+//     })
+  
+
+
+//     div.append(h2, img, p, btn) //ONLY USE APPEND. Appendchild will only append one node at a time. Append can accept anything. 
+
+//     toyCollectionDiv.append(div)} //On the `index.html` page, there is a `div` with the `id` "toy-collection."
+
+//     //Add a New Toy
+
+//     toyForm.addEventListener('submit', () => { 
+//       event.preventDefault()
+
+//       let name = event.target[0].value
+//       let image = event.target[1].value
+
+//       fetch('http://localhost:3000/toys', {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Accept": "application/json"
+//       },
+//         body: JSON.stringify({
+//         name: name,
+//         image: image,
+//         likes: 0
+//       })
+//     })
+    
+
+//       .then(res =res.json()) //DOM manipulation
+//       .then(newToy => {
+//         //add a new toy on DOM
+//         appendToy(newToy)
+//         //  //clear form
+//         // toyForm.reset()
+
+//     })
+//   })
+  
+  
+
+
+// });
+
