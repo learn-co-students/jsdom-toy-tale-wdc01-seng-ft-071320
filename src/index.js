@@ -12,10 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
       toyFormContainer.style.display = "none";
     }
   });
-
+  
   url = "http://localhost:3000/toys/"
   const addToyForm = document.querySelector("form.add-toy-form");
   const div = document.querySelector("div#toy-collection");
+  
+  // fetch toys and loadthem in div container using addToys Function
+  fetch(url)
+  .then(resp => resp.json())
+  .then(toys => addToys(toys))
 
   // Iterate through toys from url and add to div container using Add AToy func
   function addToys(toys) {
@@ -59,15 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
         p.innerText = `${updatedToy.likes} Likes`
       })
     })
-
-
-
   }
-  // fetch toys and loadthem in div container using addToys Function
-  fetch(url)
-  .then(resp => resp.json())
-  .then(toys => addToys(toys))
-
+  
 
 
   // Event Listener to create card when you submit information
