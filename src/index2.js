@@ -76,7 +76,6 @@ toyForm.addEventListener('submit', function(e){
 
 function increaseLikes(p, toy){
     
-
     p.innerText = toy.likes + 1
 
     let configObj = {
