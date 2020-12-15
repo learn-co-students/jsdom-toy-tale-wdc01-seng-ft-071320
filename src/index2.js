@@ -28,6 +28,7 @@ const displayToy = (toy) => {
     let btn = document.createElement('button')
     btn.className = 'like-btn'
     btn.innerText = 'Like <3'
+    btn.addEventListener('click', () => increaseLikes(p, toy) )
 
     toyDiv.append(h2, img, p, btn)
     toyCollectDiv.append(toyDiv)
@@ -69,3 +70,27 @@ toyForm.addEventListener('submit', function(e){
     e.target.reset()
     container.style.display = 'none'
 })
+
+
+//increase likes count
+
+function increaseLikes(p, toy){
+    
+
+    p.innerText = toy.likes + 1
+
+    let configObj = {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+        body: JSON.stringify({
+            "likes": toy.likes += 1
+          })
+    }
+
+    fetch('http://localhost:3000/toys/' + toy.id, configObj)
+    .then(res => res.json())
+    .then(updatedToy => console.log(updatedToy))
+}
